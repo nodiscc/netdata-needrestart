@@ -31,6 +31,8 @@ cp netdata-needrestart/needrestart.chart.py netdata-needrestart/needrestart.conf
 systemctl restart netdata
 ```
 
+There is a mirror on [github.com](https://github.com/nodiscc/netdata-needrestart)
+
 ## Configuration
 
 No configuration is required. Common `python.d` plugin options can be changed in [`needrestart.conf`](needrestart.conf).
