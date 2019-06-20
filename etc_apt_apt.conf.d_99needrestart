@@ -1,0 +1,3 @@
+# needrestart - Restart daemons after library updates.
+# Call needrestart after package upgrades/installations and check for pending service restarts.
+DPkg::Post-Invoke {"/usr/sbin/needrestart -b 2>&1 > /var/log/needrestart.log || true"; };
