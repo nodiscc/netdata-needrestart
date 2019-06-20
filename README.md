@@ -70,4 +70,7 @@ $ /opt/netdata/usr/libexec/netdata/plugins.d/python.d.plugin 1  debug trace need
 
 [GNU GPLv3](LICENSE)
 
-[Github.com mirror](https://github.com/nodiscc/netdata-needrestart)
+## Mirrors
+
+- https://github.com/nodiscc/netdata-needrestart
+- https://gitlab.com/nodiscc/netdata-needrestart
