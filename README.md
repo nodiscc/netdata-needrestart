@@ -1,29 +1,27 @@
 # netdata-needrestart
 
-This `python.d` module for [netdata](https://my-netdata.io/) checks whether any running processes/services/kernels should be restarted after package upgrades
-
-[needrestart](https://fiasko.io/tag/needrestart.html) is required.
-
-The chart graphes the number or services/kernel that need to be restarted over time.
+Check/graph the number of processes/services/kernels that should be restarted after upgrading packages.
 
 ![](https://i.imgur.com/ebD2MTW.png)
 
-When no restarts are required all charts will have a value of 0. Values higher than 0 indicate that a restart is required, or that there was an error opening/reading the log file.
+This is a `python.d` module for [netdata](https://my-netdata.io/).
 
-The chart is always visible when the module is installed.
+When no restarts are required all charts will have a value of 0. Values higher than 0 indicate that a restart is required, or that there was an error opening/reading the log file. The chart is always visible when the module is installed.
 
-You can get details on which services need to be restarted by reading mail sent by needrestart, or using `needrestart -l`. You can schedule an automatic restart with `needrestart -r a`.
+
 
 
 ## Installation
 
-This module expects a needrestart "log"/status file at `/var/log/needrestart.log`, containing the output of `needrestart` in [batch mode](https://github.com/liske/needrestart/blob/master/README.batch.md). Add a cron job to generate this file periodically, for example in `/etc/cron.d/needrestart`:
+Install [`needrestart`](https://fiasko.io/tag/needrestart.html)
+
+This module expects the last [batch](https://github.com/liske/needrestart/blob/master/README.batch.md) output of needrestart at `/var/log/needrestart.log`. Add a cron job to generate this file periodically, for example in `/etc/cron.d/needrestart`:
 
 ```
 0,30 * * * * root /usr/sbin/needrestart -b > /var/log/needrestart.log 2>&1
 ```
 
-Then copy the required files and restart netdata:
+Copy the required files and restart netdata:
 
 ```bash
 git clone https://gitlab.com/nodiscc/netdata-needrestart
@@ -31,7 +29,9 @@ cp netdata-needrestart/needrestart.chart.py netdata-needrestart/needrestart.conf
 systemctl restart netdata
 ```
 
-There is a mirror on [github.com](https://github.com/nodiscc/netdata-needrestart)
+You can get details on which services need to be restarted by reading mail sent by needrestart, running `needrestart`, or reading the log file.
+
+You can schedule an automatic restart with `needrestart -r a`.
 
 ## Configuration
 
@@ -57,3 +57,5 @@ $ /opt/netdata/usr/libexec/netdata/plugins.d/python.d.plugin 1  debug trace need
 ## License
 
 [GNU GPLv3](LICENSE)
+
+[Github.com mirror](https://github.com/nodiscc/netdata-needrestart)
