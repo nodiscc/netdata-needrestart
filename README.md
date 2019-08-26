@@ -6,7 +6,7 @@ Check/graph the number of processes/services/kernels that should be restarted af
 
 This is a `python.d` module for [netdata](https://my-netdata.io/). It parses output from [needrestart](https://fiasko.io/tag/needrestart.html).
 
-When no restarts are required all charts will have a value of 0. Values higher than 0 indicate that a restart is required, or that there was an error opening/reading the log file. The chart is always visible when the module is installed.
+When no restarts are required all charts will have a value of 0. Values higher than 0 indicate that a restart is required, or that there was an error opening/reading the log file. The chart is always visible when the module is installed. Any value higher than 0 will raise a warning in netdata alarms (and trigger a notification).
 
 
 ## Installation
@@ -30,11 +30,10 @@ cp netdata-needrestart/etc_apt_apt.conf.d_99needrestart /etc/apt/apt.conf.d/99ne
 # add a cron job to refresh the file every 30 minutes
 cp netdata-needrestart/etc_cron.d_needrestart /etc/cron.d/needrestart
 
-
-
-# install the module/configuration file
+# install configuration files/alarms
 cp netdata-needrestart/needrestart.chart.py /opt/netdata/python.d/
 cp netdata-needrestart/needrestart.conf /opt/netdata/python.d/
+cp netdata-needrestart/health.d_needrestart.conf /opt/netdata/etc/health.d/needrestart.conf
 
 # restart netdata
 systemctl restart netdata
@@ -64,7 +63,6 @@ $ /opt/netdata/usr/libexec/netdata/plugins.d/python.d.plugin 1  debug trace need
 
 ## TODO
 
-- Document alarm when status != 0 for more than `update every`
 - Graph one line for each service/kernel, by name
 
 ## License
