@@ -4,14 +4,14 @@ Check/graph the number of processes/services/kernels that should be restarted af
 
 ![](https://i.imgur.com/ebD2MTW.png)
 
-This is a `python.d` module for [netdata](https://my-netdata.io/). It parses output from [needrestart](https://fiasko.io/tag/needrestart.html).
+This is a `python.d` plugin for [netdata](https://my-netdata.io/). It parses output from [needrestart](https://fiasko.io/tag/needrestart.html).
 
-When no restarts are required all charts will have a value of 0. Values higher than 0 indicate that a restart is required, or that there was an error opening/reading the log file. The chart is always visible when the module is installed. Any value higher than 0 will raise a warning in netdata alarms (and trigger a notification).
+When no restarts are required all charts will have a value of 0. Values higher than 0 indicate that a restart is required, or that there was an error opening/reading the log file. The chart is always visible when the plugin is installed. Any value higher than 0 will raise a warning in netdata alarms (and trigger a notification).
 
 
 ## Installation
 
-This module expects the last [batch](https://github.com/liske/needrestart/blob/master/README.batch.md) output of needrestart at `/var/log/needrestart.log`
+This plugin expects the last [batch](https://github.com/liske/needrestart/blob/master/README.batch.md) output of needrestart at `/var/log/needrestart.log`
 
 
 ```bash
@@ -54,7 +54,7 @@ You can schedule an automatic restart at a convenient time, for example using `e
 
 ## Debug
 
-To debug this module:
+To debug this plugin:
 
 ```bash
 $ sudo su -s /bin/bash netdata
