@@ -31,9 +31,9 @@ cp netdata-needrestart/etc_apt_apt.conf.d_99needrestart /etc/apt/apt.conf.d/99ne
 cp netdata-needrestart/etc_cron.d_needrestart /etc/cron.d/needrestart
 
 # install configuration files/alarms
-cp netdata-needrestart/needrestart.chart.py /opt/netdata/python.d/
-cp netdata-needrestart/needrestart.conf /opt/netdata/python.d/
-cp netdata-needrestart/health.d_needrestart.conf /opt/netdata/etc/health.d/needrestart.conf
+cp netdata-needrestart/needrestart.chart.py /opt/netdata/usr/libexec/netdata/python.d/
+cp netdata-needrestart/needrestart.conf /opt/netdata/etc/netdata/python.d/
+cp netdata-needrestart/health.d_needrestart.conf /opt/netdata/etc/netdata/health.d/needrestart.conf
 
 # restart netdata
 systemctl restart netdata
