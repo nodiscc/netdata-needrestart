@@ -31,9 +31,11 @@ cp netdata-needrestart/etc_apt_apt.conf.d_99needrestart /etc/apt/apt.conf.d/99ne
 cp netdata-needrestart/etc_cron.d_needrestart /etc/cron.d/needrestart
 
 # install configuration files/alarms
-cp netdata-needrestart/needrestart.chart.py /opt/netdata/usr/libexec/netdata/python.d/
-cp netdata-needrestart/needrestart.conf /opt/netdata/etc/netdata/python.d/
-cp netdata-needrestart/health.d_needrestart.conf /opt/netdata/etc/netdata/health.d/needrestart.conf
+netdata_install_prefix="/opt/netdata" # if netdata is installed from binary/.run script
+netdata_install_prefix="" # if netdata is installed from OS packages
+cp netdata-needrestart/needrestart.chart.py $netdata_install_prefix/usr/libexec/netdata/python.d/
+cp netdata-needrestart/needrestart.conf $netdata_install_prefix/etc/netdata/python.d/
+cp netdata-needrestart/health.d_needrestart.conf $netdata_install_prefix/etc/netdata/health.d/needrestart.conf
 
 # restart netdata
 systemctl restart netdata
@@ -58,7 +60,7 @@ To debug this plugin:
 
 ```bash
 $ sudo su -s /bin/bash netdata
-$ /opt/netdata/usr/libexec/netdata/plugins.d/python.d.plugin 1  debug trace needrestart
+$ $netdata_install_prefix/usr/libexec/netdata/plugins.d/python.d.plugin 1  debug trace needrestart
 ```
 
 ## TODO
