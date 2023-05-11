@@ -2,7 +2,7 @@
 
 Check/graph the number of processes/services/kernels that should be restarted after upgrading packages.
 
-![](https://i.imgur.com/ebD2MTW.png)
+![](https://gitlab.com/nodiscc/toolbox/-/raw/master/DOC/SCREENSHOTS/ebD2MTW.png)
 
 This is a `python.d` plugin for [netdata](https://my-netdata.io/). It parses output from [needrestart](https://fiasko.io/tag/needrestart.html).
 
